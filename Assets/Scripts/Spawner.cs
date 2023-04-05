@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject athing;
+    public int ammoCount = 6;
     public KeyCode spawnbutton = KeyCode.Mouse0;
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,29 @@ public class Spawner : MonoBehaviour
     {
         if (Input.GetKeyDown(spawnbutton))
         {
-            Spawn();
+            if(ammoCount >= 1)
+            {
+                Spawn();
+                ammoCount -= 1;
+            }
+            else
+            {
+                Debug.Log("You need ammo!");
+            }
+            
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if(ammoCount == 0)
+            {
+                ammoCount = 6;
+            }
+            else
+            {
+                return;
+            }
+        }
+
     }
 
     public GameObject Spawn()

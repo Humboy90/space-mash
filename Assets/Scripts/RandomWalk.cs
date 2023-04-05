@@ -26,10 +26,10 @@ public class RandomWalk : MonoBehaviour
         if (timer <= 0)
         {
             direction = Random.insideUnitSphere;
-            Wires.Make("Direction0").Arrow(transform.position, transform.position + direction, Color.blue);
+            //Wires.Make("Direction0").Arrow(transform.position, transform.position + direction, Color.blue);
             direction.y = 0;
             direction = direction.normalized;
-            Wires.Make("Direction").Arrow(transform.position, transform.position + direction, Color.red);
+            //Wires.Make("Direction").Arrow(transform.position, transform.position + direction, Color.red);
 
             rb.velocity = direction;
             timer = walkTime;
