@@ -1,0 +1,62 @@
+# Features
+- First Person Controls
+- Player Movement + Firing Inputs
+- Enemy AI
+- Random Objects
+- Boss Fights
+- Weapon System
+- Upgrades
+    - Faster Firerate
+    - Better Weapon
+        - Lasers
+        - Bullets
+        - Rockets
+        - Shield Ram
+        - Boomerang
+    - Extra HP
+    - Upgraded Weapon DMG
+    - Bouncy Bullets
+    - Penetration
+    - Shield
+        - Temperary
+        - One Hit
+    - Slow Regen
+        - Round per Regen
+        - Slow Drip Regen
+- Score per Kill
+- Scoreboard
+    - Personal
+    - Online
+- Infinite Generation of levels
+- Ship Custimization
+    - Different Ship Looks
+    - Different Ship Stats
+        - DMG
+        - Speed
+        - Starter Weapon
+        - HP
+        - Regen Stat
+- Monetization
+- Different Modes
+    - Wave Survival
+    - Time Speedrun
+    - Stat Run
+- Art Assets
+    - Ship Design
+    - Player
+    - Enemies
+    - Background
+    - Space Objects
+    - Level Design
+    - Power-up Icons
+    - Icon General
+        - Yes/No Button
+        - Quit
+        - Menu
+        - Pause/Play
+        - Inventory
+        - Weapon
+        - Upgrade
+        - Scoreboard
+    - Splashscreen
+
