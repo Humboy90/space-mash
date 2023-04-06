@@ -7,6 +7,7 @@ public class ShipController : MonoBehaviour
     public int rotationspeed = 360;
     public int movespeed = 5;
     public ParticleSystem thruster;
+    private bool cursorLock = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,22 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Insert))
+        {
+            if(cursorLock == false)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                cursorLock = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                cursorLock = false;
+            }
+            
+        }
+
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(0, -1 * rotationspeed * Time.deltaTime, 0);
