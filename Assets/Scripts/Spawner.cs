@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject ally;
     public GameObject athing;
     public int ammoCount = 6;
     public KeyCode spawnbutton = KeyCode.Mouse0;
@@ -45,6 +46,12 @@ public class Spawner : MonoBehaviour
 
     public GameObject Spawn()
     {
-        return Instantiate(athing, transform.position, transform.rotation);
+        GameObject thing = Instantiate(athing, transform.position, transform.rotation);
+        Damage dmg = thing.GetComponentInChildren<Damage>();
+        if(dmg != null)
+        {
+            dmg.ally = ally;
+        }
+        return thing;
     }
 }

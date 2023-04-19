@@ -9,7 +9,7 @@ public class Hitpoints : MonoBehaviour
     private float _hittimer;
     private float _scalar;
     private Renderer renderer;
-    public Color ogcolor;
+    private Color ogcolor;
     public Gradient hitcolor;
     public UnityEvent onDeath;
     public int score = 300;
