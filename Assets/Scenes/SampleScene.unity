@@ -6184,6 +6184,9 @@ MonoBehaviour:
   athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 3
   spawnbutton: 323
+  timer: 0
+  cd: 0.7
+  rlttime: 3
 --- !u!23 &1416675009
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11164,6 +11167,9 @@ MonoBehaviour:
   athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 3
   spawnbutton: 324
+  timer: 0
+  cd: 0.7
+  rlttime: 3
 --- !u!23 &1639966145
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -1,10 +1,11 @@
+using NonStandard;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FocusAimbot : MonoBehaviour
 {
-
+    public Transform gun;
     public GameObject target;
     
     // -5....e..p.5
@@ -17,8 +18,55 @@ public class FocusAimbot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 delta = target.transform.position - this.transform.position;
+        
+        if (isFacingEnemy())
+        {
+            Vector3 delta = target.transform.position - this.transform.position;
+            Vector3 direction = delta.normalized;
+            transform.rotation = Quaternion.LookRotation(direction);
+            
+        }
+        //Wires.Make("Lazer" + name).Arrow(gun.position, gun.position + gun.forward * 10, Color.red);
+    }
+
+    //refactor plz :L
+    public bool isFacingEnemy()
+    {
+        Vector3 pos = target.transform.position + Random.onUnitSphere * 100;
+        Vector3 delta = pos - this.transform.position;
         Vector3 direction = delta.normalized;
-        transform.rotation = Quaternion.LookRotation(direction);
+        float distance = 10;
+        if (Physics.SphereCast(gun.position, 0.2f, direction, out RaycastHit hit))
+        {
+            distance = hit.distance;
+            //Wires.Make("Normal" + name).Arrow(hit.point, hit.point + hit.normal, Color.yellow);
+            Team teamOfTarget = hit.transform.GetComponent<Team>();
+            Velocity vel = hit.transform.GetComponent<Velocity>();
+            if(vel != null)
+            {
+                return false;
+            }
+            if (teamOfTarget == null)
+            {
+                transform.rotation = Quaternion.LookRotation(direction);
+                return true;
+            }
+            bool sameTeam = teamOfTarget.teamID == 1;
+            if (sameTeam)
+            {
+                return false;
+            }
+            else
+            {
+
+                return true;
+            }
+            
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 }

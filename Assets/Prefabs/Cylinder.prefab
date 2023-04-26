@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6310806701835051984}
   - component: {fileID: 6515015578168821390}
+  - component: {fileID: 3538243605298392082}
   m_Layer: 0
   m_Name: gun
   m_TagString: Untagged
@@ -48,6 +49,21 @@ MonoBehaviour:
   athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   spawnbutton: 98
+--- !u!114 &3538243605298392082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834332518825956163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c371dadb1af0ed44bfe4f9d5d357d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fa: {fileID: 1685081003220502806}
+  spawn: {fileID: 6515015578168821390}
+  timer: 3
 --- !u!1 &3985186475617462368
 GameObject:
   m_ObjectHideFlags: 0
@@ -4932,6 +4948,7 @@ GameObject:
   - component: {fileID: 1482629282}
   - component: {fileID: 1482629281}
   - component: {fileID: 1685081003220502806}
+  - component: {fileID: 8491904731182651827}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -5076,9 +5093,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6515015578168821390}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+      - m_Target: {fileID: 2834332518825956163}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5133,7 +5150,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c18eda0a327ae0479afc9df2a6af54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 6310806701835051984}
   target: {fileID: 0}
+--- !u!114 &8491904731182651827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985186476566347110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a92dda16f5f1e2340b818d84c7027457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamID: 1
 --- !u!1 &7976363715143838215
 GameObject:
   m_ObjectHideFlags: 0
