@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class EnemyFireingLogic : MonoBehaviour
 {
@@ -9,17 +12,34 @@ public class EnemyFireingLogic : MonoBehaviour
     public FocusAimbot fa;
     public Spawner spawn;
     public float timer = 3f;
+    public float cooldown = 3f;
+    public float reloadtime = 6f;
+    public Image reloadingimg;
 
-    
+    public UnityEvent_Float onTimerUpdate;
+
+    [System.Serializable] public class UnityEvent_Float : UnityEvent<float> { }
+
+    private void Start()
+    {
+        //Environment.TickCount TODO : Count in milliseconds
+        reloadingimg.enabled = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
-        if(timer <= 0)
+        onTimerUpdate.Invoke(1 - timer / reloadtime);
+        if (timer <= 0)
         {
             if(spawn.ammoCount > 0)
             {
+                if(reloadingimg != null)
+                {
+                    reloadingimg.enabled = false;
+                }
+                
                 if (fa.isFacingEnemy())
                 {
                     spawn.Spawn();
@@ -28,13 +48,14 @@ public class EnemyFireingLogic : MonoBehaviour
                 {
                     return;
                 }
-                timer = 3f;
+                timer = cooldown;
                 spawn.ammoCount -= 1;
             }
             else
             {
+                reloadingimg.enabled = true;
                 spawn.ammoCount = 6;
-                timer = 6f;
+                timer = reloadtime;
             }
             
         }

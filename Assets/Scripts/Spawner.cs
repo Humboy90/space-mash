@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class Spawner : MonoBehaviour
     public float cd;
     [Tooltip("Reload time")]
     public float rlttime;
+    public Transform aim;
+    public UnityEvent_Float onTimerUpdate;
+
+    [System.Serializable] public class UnityEvent_Float : UnityEvent<float> { }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +29,24 @@ public class Spawner : MonoBehaviour
     // if we look arnt looking at enemy dont shoot, if player shoot
     void Update()
     {
+        if (aim != null)
+        {
+            Ray ray = new Ray(transform.position, transform.forward);
+            if (Physics.SphereCast(ray, 0.125f, out RaycastHit hit))
+            {
+                aim.position = hit.transform.position + hit.transform.forward * 2;
+                aim.rotation = hit.transform.rotation;
+            }
+
+            else
+            {
+                aim.position = ray.GetPoint(10);
+                aim.rotation = transform.rotation;
+            }
+        }
+        
         timer -= Time.deltaTime;
+        onTimerUpdate.Invoke(1-timer/rlttime);
         if (Input.GetKeyDown(spawnbutton))
         {
             if(ammoCount >= 1 && timer <= 0)
@@ -40,15 +63,8 @@ public class Spawner : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if(ammoCount == 0)
-            {
-                timer = rlttime;
-                ammoCount = 6;
-            }
-            else
-            {
-                return;
-            }
+            timer = rlttime;
+            ammoCount = 6;
         }
 
     }
@@ -59,7 +75,7 @@ public class Spawner : MonoBehaviour
         Damage dmg = thing.GetComponentInChildren<Damage>();
         if(dmg != null)
         {
-            dmg.ally = ally;
+            dmg.owner = ally;
         }
         return thing;
     }

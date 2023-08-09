@@ -5,13 +5,31 @@ using UnityEngine.Events;
 
 public class Hitpoints : MonoBehaviour
 {
-    private int _hitpoints = 3;
+    [SerializeField] private int _hitpoints = 3;
     private float _hittimer;
     private float _scalar;
     private Renderer renderer;
     private Color ogcolor;
     public Gradient hitcolor;
     public UnityEvent onDeath;
+    public Phase[] phases = new Phase[0];
+    [System.Serializable] public class Phase
+    {
+        public string name;
+        public int hp;
+        public bool invoked;
+        public UnityEvent startfunction;
+        public void TriggerPhases(int _hitpoints)
+        {
+            if (invoked || _hitpoints > hp)
+            {
+                return;
+            }
+            invoked = true;
+            startfunction.Invoke();
+        }
+    }
+
     public int score = 300;
     public float hittimer
     {
@@ -31,7 +49,14 @@ public class Hitpoints : MonoBehaviour
         set
         {
             _hitpoints = value;
-            if(_hitpoints <= 0)
+            for (int i = 0; i < phases.Length; i++)
+            {
+                Phase p = phases[i];
+                p.TriggerPhases(_hitpoints);
+            }
+            
+            
+            if (_hitpoints <= 0)
             {
                 onDeath.Invoke();
                 ImportantVars.Instance.score += score;
@@ -64,4 +89,11 @@ public class Hitpoints : MonoBehaviour
             renderer.material.color = hitcolor.Evaluate(_hittimer * _scalar);
         }
     }
+
+    public void DebugPrint(string text)
+    {
+        Debug.Log(text);
+    }
+    
+
 }

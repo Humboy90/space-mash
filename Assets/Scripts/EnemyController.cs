@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HiveMind : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public GameObject[] listOfEnemies;
     public Vector3 direction;

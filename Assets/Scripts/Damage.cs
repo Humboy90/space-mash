@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public int damage = 1;
-    public GameObject ally;
+    public GameObject owner;
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -19,19 +19,33 @@ public class Damage : MonoBehaviour
 
     public void doCollision(GameObject go)
     {
-        if(go == ally)
+       
+        Team team = go.GetComponent<Team>();
+        if(team != null)
         {
-            return;
-        }
-        Hitpoints hp = go.GetComponent<Hitpoints>();
-        if (hp == null)
-        {
-            return;
+            if (go == owner)
+            {
+                return;
+            }
+            if (team.teamID == owner.GetComponent<Team>().teamID)
+            {
+                return;
+            }
+            Hitpoints hp = go.GetComponent<Hitpoints>();
+            if (hp == null)
+            {
+                return;
+            }
+            else
+            {
+                hp.hitpoints -= damage;
+                hp.hittimer = 1f / 4;
+            }
         }
         else
         {
-            hp.hitpoints -= damage;
-            hp.hittimer = 1f / 4;
+            return;
         }
+        
     }
 }

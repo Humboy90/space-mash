@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class FocusAimbot : MonoBehaviour
 {
+
     public Transform gun;
     public GameObject target;
-    
+    public float aimerror = 0;
     // -5....e..p.5
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         target = FindObjectOfType<ShipController>().gameObject;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
         if (isFacingEnemy())
@@ -32,7 +33,7 @@ public class FocusAimbot : MonoBehaviour
     //refactor plz :L
     public bool isFacingEnemy()
     {
-        Vector3 pos = target.transform.position + Random.onUnitSphere * 100;
+        Vector3 pos = target.transform.position + Random.onUnitSphere * aimerror;
         Vector3 delta = pos - this.transform.position;
         Vector3 direction = delta.normalized;
         float distance = 10;
@@ -48,7 +49,7 @@ public class FocusAimbot : MonoBehaviour
             }
             if (teamOfTarget == null)
             {
-                transform.rotation = Quaternion.LookRotation(direction);
+                //transform.rotation = Quaternion.LookRotation(direction);
                 return true;
             }
             bool sameTeam = teamOfTarget.teamID == 1;
