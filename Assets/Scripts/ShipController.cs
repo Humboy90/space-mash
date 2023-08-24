@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour
     public ParticleSystem thruster;
     public Transform cam;
     private bool cursorLock = false;
+    public GameObject shipGraphic;
     // Start is called before the first frame update
     void Start()
     {

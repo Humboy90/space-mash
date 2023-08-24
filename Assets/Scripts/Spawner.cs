@@ -29,6 +29,13 @@ public class Spawner : MonoBehaviour
     // if we look arnt looking at enemy dont shoot, if player shoot
     void Update()
     {
+        if(Time.timeScale == 0)
+        {
+
+            //Debug.Log("paused");
+            return;
+            
+        }
         if (aim != null)
         {
             Ray ray = new Ray(transform.position, transform.forward);

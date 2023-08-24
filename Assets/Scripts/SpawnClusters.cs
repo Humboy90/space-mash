@@ -89,10 +89,10 @@ public class SpawnClusters : MonoBehaviour
 
     public void Awake()
     {
-        Debug.Log("awake now");
+        //Debug.Log("awake now");
     }
     public void OnDestroy()
     {
-        Debug.Log("destroying now");
+        //Debug.Log("destroying now");
     }
 }

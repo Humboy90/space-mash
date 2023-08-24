@@ -48,7 +48,7 @@ namespace NonStandard
 		}
 		private void Awake()
 		{
-			Debug.Log("work plz");
+			//Debug.Log("work plz");
 			lifeCycles.Add(this);
 		}
 		void Start()
@@ -105,7 +105,6 @@ namespace NonStandard
 			IEnumerator pauseNextFrame()
 			{
 				yield return null;
-				Debug.Log("funny 2.0" + _isPaused + lifeCycles.Count);
 				if (_isPaused) yield break;
 				_isPaused = true;
 				foreach (LifeCycle lc in lifeCycles)
