@@ -7,6 +7,7 @@ public class ImportantVars : MonoBehaviour
 {
     public int score;
     public int wave = 1;
+    public int gameEndWave = 5;
     public int enemycount;
     public int bosscount;
     public Spawner ammo1;
@@ -28,6 +29,9 @@ public class ImportantVars : MonoBehaviour
         text.text = "Score : " + score.ToString();
         text2.text = ammo1.ammoCount.ToString() + " | " + ammo2.ammoCount.ToString();
         wavelabel.text = "Wave : " + wave.ToString();
+
+
+
     }
 
     private void Awake()

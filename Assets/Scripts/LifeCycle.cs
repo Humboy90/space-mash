@@ -11,6 +11,26 @@ namespace NonStandard
 {
 	public class LifeCycle : MonoBehaviour
 	{
+		private static LifeCycle s_instance;
+		public static LifeCycle Instance
+        {
+			get
+            {
+				if(s_instance != null)
+                {
+					return s_instance;
+                }
+				s_instance = FindObjectOfType<LifeCycle>();
+				if(s_instance != null)
+                {
+					return s_instance;
+                }
+				GameObject gObj = new GameObject();
+				s_instance = gObj.AddComponent<LifeCycle>();
+				return s_instance;
+                
+            }
+        }
 		//public static LifeCycle Instance => Global.GetComponent<LifeCycle>();
 #if UNITY_EDITOR
 		public LifeCycleEvents lifeCycleEditor = new LifeCycleEvents();
@@ -48,7 +68,7 @@ namespace NonStandard
 		}
 		private void Awake()
 		{
-			//Debug.Log("work plz");
+			s_instance = this;
 			lifeCycles.Add(this);
 		}
 		void Start()

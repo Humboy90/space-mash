@@ -8,7 +8,7 @@ public class Hitpoints : MonoBehaviour
     [SerializeField] private int _hitpoints = 3;
     private float _hittimer;
     private float _scalar;
-    private Renderer renderer;
+    public Renderer renderer;
     private Color ogcolor;
     public Gradient hitcolor;
     public UnityEvent onDeath;
@@ -66,8 +66,7 @@ public class Hitpoints : MonoBehaviour
     }
     public void Start()
     {
-        renderer = GetComponentInChildren<Renderer>();
-        ogcolor = renderer.material.color;
+        RecalculateRender();
     }
     public void Update()
     {
@@ -78,15 +77,13 @@ public class Hitpoints : MonoBehaviour
         else
         {
             _hittimer -= Time.deltaTime;
-            //if(renderer.material.color == ogcolor)
-            //{
-            //    renderer.material.color = Color.red;
-            //}
-            //else
-            //{
-            //    renderer.material.color = ogcolor;
-            //}
+
+
             renderer.material.color = hitcolor.Evaluate(_hittimer * _scalar);
+            if(_hittimer <= 0)
+            {
+                renderer.material.color = ogcolor;
+            }        
         }
     }
 
@@ -95,5 +92,10 @@ public class Hitpoints : MonoBehaviour
         Debug.Log(text);
     }
     
+    public void RecalculateRender()
+    {
+        renderer = GetComponentInChildren<Renderer>();
+        ogcolor = renderer.material.color;
+    }
 
 }

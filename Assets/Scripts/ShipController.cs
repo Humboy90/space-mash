@@ -11,10 +11,14 @@ public class ShipController : MonoBehaviour
     public Transform cam;
     private bool cursorLock = false;
     public GameObject shipGraphic;
+    public CustimizeClass custimizer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log(string.Join(",", (object[])GetComponentsInChildren<Renderer>()));
+        custimizer.LoadShip();
+        Debug.Log(string.Join(",",(object[])GetComponentsInChildren<Renderer>()));
+        GetComponent<Hitpoints>().RecalculateRender();
     }
 
     // Update is called once per frame

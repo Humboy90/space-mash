@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CustimizeClass : MonoBehaviour
 {
+    const string ShipIndex = "Ship Index";
+    const string ShipColor = "Ship Color";
+
     public Button leftArrow;
     public Button rightArrow;
 
@@ -107,19 +110,27 @@ public class CustimizeClass : MonoBehaviour
 
     public void ConfirmShip()
     {
+        Confirm(choiceIndex, currentColor);
+    }
+    public void Confirm(int shipIndex, Color shipColor)
+    {
         ShipController sc = player.GetComponent<ShipController>();
         if (sc.shipGraphic != null)
         {
             Destroy(sc.shipGraphic);
         }
+        choiceIndex = shipIndex;
+        currentColor = shipColor;
+        RefreshShipModel();
+
         sc.shipGraphic = Instantiate(currentModel);
         sc.shipGraphic.transform.SetParent(player.transform);
+        sc.shipGraphic.transform.SetSiblingIndex(0);
         sc.shipGraphic.transform.localPosition = Vector3.zero;
         sc.shipGraphic.transform.localRotation = Quaternion.identity;
-        PlayerPrefs.SetInt("Ship Index", choiceIndex);
-        Color32 c = currentColor;
-        int serializedColor = CompressNumbers(c.r, c.g, c.b, c.a);
-        PlayerPrefs.SetInt("Ship Color", serializedColor);
+        PlayerPrefs.SetInt(ShipIndex, shipIndex);
+        int serializedColor = ColorToInt(shipColor);
+        PlayerPrefs.SetInt(ShipColor, serializedColor);
 
     }
 
@@ -136,5 +147,27 @@ public class CustimizeClass : MonoBehaviour
         b = (byte)((source >> 8) & 255);
         c = (byte)((source >> 16) & 255);
         d = (byte)((source >> 24) & 255);
+    }
+
+    public int ColorToInt(Color color)
+    {
+        Color32 c = color;
+        int serializedColor = CompressNumbers(c.r, c.g, c.b, c.a);
+        return serializedColor;
+    }
+
+    public Color IntToColor(int i)
+    {
+        int serializedColor = i;
+        GetNumbers(serializedColor, out byte r, out byte g, out byte b, out byte a);
+        Color32 c = new Color32(r, g, b, a);
+        return c;
+    }
+
+    public void LoadShip()
+    {
+        int shipIndex = PlayerPrefs.GetInt(ShipIndex);
+        Color shipColor = IntToColor(PlayerPrefs.GetInt(ShipColor));
+        Confirm(shipIndex,shipColor);
     }
 }
