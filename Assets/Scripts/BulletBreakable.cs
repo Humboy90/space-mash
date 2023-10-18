@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletBreakable : MonoBehaviour
 {
-    
+    public float lifetime = 3;
     void Start()
     {
         //Destroy(gameObject, 3);
@@ -12,7 +12,7 @@ public class BulletBreakable : MonoBehaviour
     }
 
     IEnumerator destroyMeSoon()
-    {
+    {        
         GetComponent<Renderer>().enabled = false;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
         GetComponent<Collider>().enabled = false;
@@ -23,7 +23,7 @@ public class BulletBreakable : MonoBehaviour
 
     IEnumerator destroyMeIfImStillAlive()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(lifetime);
         if (gameObject == null)
         {
             yield break;
@@ -35,6 +35,11 @@ public class BulletBreakable : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Destroy(gameObject);
+        DestroySequence();
+    }
+
+    public void DestroySequence()
+    {
         StartCoroutine(destroyMeSoon());
     }
 }

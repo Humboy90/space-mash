@@ -21,7 +21,13 @@ public class TimeSpeedrun : MonoBehaviour
 
     public void TimeSpeedrunUIChange()
     {
-        scoreUI.SetActive(false);
         timerUI.SetActive(true);
+        ImportantVars.timespeedruntoggle = true;
+    }
+
+    public void LeaveTimeSpeedrun()
+    {
+        timerUI.SetActive(false);
+        ImportantVars.timespeedruntoggle = false;
     }
 }

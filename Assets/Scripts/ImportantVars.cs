@@ -7,35 +7,64 @@ public class ImportantVars : MonoBehaviour
 {
     public int score;
     public int wave = 1;
+    public static bool timespeedruntoggle;
     public int gameEndWave = 5;
     public int enemycount;
     public int bosscount;
-    public Spawner ammo1;
-    public Spawner ammo2;
-    public TMP_Text text;
-    public TMP_Text text2;
-    public TMP_Text wavelabel;
     public static ImportantVars Instance;
+    public HudUI hud;
+    public TimeSpeedrun tsscript;
+
+    public int EnemyCount
+    {
+        get
+        {
+            return enemycount;
+        }
+        set
+        {
+            enemycount = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    
+
+    public void WaveEndAsString(string str)
     {
-        text.text = "Score : " + score.ToString();
-        text2.text = ammo1.ammoCount.ToString() + " | " + ammo2.ammoCount.ToString();
-        wavelabel.text = "Wave : " + wave.ToString();
-
-
-
+        gameEndWave = int.Parse(str);
     }
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void NewGame()
+    {
+        score = 0;
+        wave = 1;
+        timespeedruntoggle = false;
+        enemycount = 0;
+        bosscount = 0;
+        tsscript.timer = 0f;
+        hud.ammo1.ReloadNow();
+        hud.ammo2.ReloadNow();
     }
 }

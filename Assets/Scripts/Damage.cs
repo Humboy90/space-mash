@@ -5,6 +5,9 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public int damage = 1;
+    public int collisions = 0;
+    public int maxCollisons = 1;
+    public Rigidbody rb;
     public GameObject owner;
 
     public void OnCollisionEnter(Collision collision)
@@ -19,7 +22,7 @@ public class Damage : MonoBehaviour
 
     public void doCollision(GameObject go)
     {
-       
+        
         Team team = go.GetComponent<Team>();
         if(team != null)
         {
@@ -27,9 +30,12 @@ public class Damage : MonoBehaviour
             {
                 return;
             }
-            if (team.teamID == owner.GetComponent<Team>().teamID)
+            if(owner != null)
             {
-                return;
+                if (team.teamID == owner.GetComponent<Team>().teamID)
+                {
+                    return;
+                }
             }
             Hitpoints hp = go.GetComponent<Hitpoints>();
             if (hp == null)
@@ -38,8 +44,14 @@ public class Damage : MonoBehaviour
             }
             else
             {
+                collisions += 1;
                 hp.hitpoints -= damage;
                 hp.hittimer = 1f / 4;
+                if(collisions >= maxCollisons)
+                {
+                    rb.velocity = Vector3.zero;
+                    GetComponent<BulletBreakable>().DestroySequence();
+                }
             }
         }
         else

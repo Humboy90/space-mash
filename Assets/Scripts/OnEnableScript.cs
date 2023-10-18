@@ -9,7 +9,7 @@ public class OnEnableScript : MonoBehaviour
     public UnityEvent onDisable;
     private void OnEnable()
     {
-        //Debug.Log("im funny :)");
+        Debug.Log("im funny :)" + name);
         onEnable.Invoke();
 
     }

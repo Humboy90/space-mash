@@ -27,6 +27,7 @@ public class CustimizeClass : MonoBehaviour
         public GameObject modelType;
         public float healthPoints;
         public float speed;
+        public int bulletIndex;
     }
     public PlayerShipClass[] shipArray = new PlayerShipClass[]
     {
@@ -34,13 +35,15 @@ public class CustimizeClass : MonoBehaviour
         {
             name = "Speed Ship",
             healthPoints = 3f,
-            speed = 1f
+            speed = 1f,
+            bulletIndex = 0
         },
         new PlayerShipClass
         {
             name = "Shield Ship",
             healthPoints = 4f,
-            speed = 0.75f
+            speed = 0.75f,
+            bulletIndex = 1
         },
     };
 
@@ -122,6 +125,7 @@ public class CustimizeClass : MonoBehaviour
         choiceIndex = shipIndex;
         currentColor = shipColor;
         RefreshShipModel();
+        player.GetComponent<ChangeBullets>().BulletIndex = shipArray[choiceIndex].bulletIndex;
 
         sc.shipGraphic = Instantiate(currentModel);
         sc.shipGraphic.transform.SetParent(player.transform);

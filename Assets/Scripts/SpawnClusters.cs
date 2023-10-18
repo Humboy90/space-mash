@@ -19,7 +19,7 @@ public class SpawnClusters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindObjectOfType<ShipController>().gameObject;
+        player = GameObject.FindObjectOfType<ShipController>(true).gameObject;
         SpawnHiveMind();
     }
 
@@ -94,5 +94,9 @@ public class SpawnClusters : MonoBehaviour
     public void OnDestroy()
     {
         //Debug.Log("destroying now");
+        if(hivemind != null)
+        {
+            Destroy(hivemind.gameObject);
+        }
     }
 }

@@ -121,7 +121,8 @@ namespace NonStandard
 		}
 		public void Pause()
 		{
-			StartCoroutine(pauseNextFrame());
+			Debug.Log("im pausing");
+			ImportantVars.Instance.StartCoroutine(pauseNextFrame());
 			IEnumerator pauseNextFrame()
 			{
 				yield return null;

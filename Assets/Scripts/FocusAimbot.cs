@@ -13,7 +13,7 @@ public class FocusAimbot : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        target = FindObjectOfType<ShipController>().gameObject;
+        target = FindObjectOfType<ShipController>(true).gameObject;
     }
 
     // Update is called once per frame

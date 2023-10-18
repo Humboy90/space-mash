@@ -7,7 +7,8 @@ public class Spawner : MonoBehaviour
 {
     public GameObject ally;
     public GameObject athing;
-    public int ammoCount = 6;
+    public int ammoCount;
+    public int maxammo = 6;
     public KeyCode spawnbutton = KeyCode.Mouse0;
     public float timer = 1.5f;
     [Tooltip("Duration Between Shots")]
@@ -22,9 +23,12 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ReloadNow();
     }
-
+    public void ReloadNow()
+    {
+        ammoCount = maxammo;
+    }
     // Update is called once per frame
     // if we look arnt looking at enemy dont shoot, if player shoot
     void Update()
@@ -51,12 +55,19 @@ public class Spawner : MonoBehaviour
                 aim.rotation = transform.rotation;
             }
         }
-        
+
+        if (ammoCount == 0)
+        {
+            timer = rlttime;
+            ReloadNow();
+        }
+
         timer -= Time.deltaTime;
         onTimerUpdate.Invoke(1-timer/rlttime);
         if (Input.GetKeyDown(spawnbutton))
         {
-            if(ammoCount >= 1 && timer <= 0)
+            
+            if (ammoCount >= 1 && timer <= 0)
             {
                 Spawn();
                 ammoCount -= 1;
@@ -71,7 +82,7 @@ public class Spawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             timer = rlttime;
-            ammoCount = 6;
+            ReloadNow();
         }
 
     }
