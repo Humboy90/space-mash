@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public int damage = 1;
+    public float damage = 1;
     public int collisions = 0;
     public int maxCollisons = 1;
     public Rigidbody rb;
@@ -47,7 +47,7 @@ public class Damage : MonoBehaviour
                 collisions += 1;
                 hp.hitpoints -= damage;
                 hp.hittimer = 1f / 4;
-                if(collisions >= maxCollisons)
+                if (collisions >= maxCollisons && GetComponent<Astroid>() == null)
                 {
                     rb.velocity = Vector3.zero;
                     GetComponent<BulletBreakable>().DestroySequence();

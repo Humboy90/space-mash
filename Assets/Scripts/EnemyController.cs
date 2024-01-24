@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject[] listOfEnemies;
+    public List<GameObject> listOfEnemies;
     public Vector3 direction;
     public float timer;
     public float walkTime = 3;
@@ -29,7 +29,7 @@ public class EnemyController : MonoBehaviour
             //Wires.Make("Direction").Arrow(transform.position, transform.position + direction, Color.red);
 
             //rb.velocity = direction;
-            for (int i = 0; i < listOfEnemies.Length; i++)
+            for (int i = 0; i < listOfEnemies.Count; i++)
             {
                 listOfEnemies[i].GetComponent<Rigidbody>().velocity = direction;
             }

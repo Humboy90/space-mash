@@ -49,7 +49,9 @@ MonoBehaviour:
   count: 1
   distancespawn: 25
   delta: {x: 1.5, y: 0, z: 0}
-  thing: {fileID: 3985186476566347110, guid: 70ba96d2b7326dd44881d780f24b4ad6, type: 3}
+  enemyPrefabs:
+  - {fileID: 3985186476566347110, guid: 70ba96d2b7326dd44881d780f24b4ad6, type: 3}
+  - {fileID: 4223361293389764882, guid: b2b9c0092fd937a49aebde94225b2fea, type: 3}
   hivemind: {fileID: 0}
   waveover: 0
   prefabhm: {fileID: 8188723094910911903}

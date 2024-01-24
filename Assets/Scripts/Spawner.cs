@@ -1,3 +1,4 @@
+using NonStandard;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class Spawner : MonoBehaviour
     public int maxammo = 6;
     public KeyCode spawnbutton = KeyCode.Mouse0;
     public float timer = 1.5f;
+    public float radius = 0.125f;
     [Tooltip("Duration Between Shots")]
     public float cd;
     [Tooltip("Reload time")]
@@ -43,10 +45,18 @@ public class Spawner : MonoBehaviour
         if (aim != null)
         {
             Ray ray = new Ray(transform.position, transform.forward);
-            if (Physics.SphereCast(ray, 0.125f, out RaycastHit hit))
+            if (Physics.SphereCast(ray, radius, out RaycastHit hit))
             {
-                aim.position = hit.transform.position + hit.transform.forward * 2;
-                aim.rotation = hit.transform.rotation;
+                //aim.position = hit.transform.position + hit.transform.forward * 2;
+                //Vector3 nextpos = ray.GetPoint(hit.distance - 1);
+                //Wires.Make("Retical Drift" + name).Line(aim.position, nextpos, Color.magenta);
+                if(hit.transform.gameObject != ally)
+                {
+                    aim.position = ray.GetPoint(hit.distance - 1);
+                    aim.rotation = hit.transform.rotation;
+                }
+                
+                //Debug.Log(hit.collider);
             }
 
             else
@@ -94,6 +104,13 @@ public class Spawner : MonoBehaviour
         if(dmg != null)
         {
             dmg.owner = ally;
+        }
+        Team team = thing.GetComponentInChildren<Team>();
+
+        if(team != null)
+        {
+            //Debug.Log("my team assign : " + dmg.owner.GetComponent<Team>().teamID);
+            team.teamID = dmg.owner.GetComponent<Team>().teamID;
         }
         return thing;
     }

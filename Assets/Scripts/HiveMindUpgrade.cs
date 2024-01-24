@@ -16,7 +16,7 @@ public class HiveMindUpgrade : EnemyController
             Debug.Log(i + " " + (i % 5));
         }
         */
-        listOfEnemies = new GameObject[count];
+        listOfEnemies = new List<GameObject>(count);
         for (int i = 0; i<count; i++)
         {
             //if(ImportantVars.Instance.wave % )

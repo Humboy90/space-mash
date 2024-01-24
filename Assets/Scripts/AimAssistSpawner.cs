@@ -6,7 +6,7 @@ using UnityEngine;
 public class AimAssistSpawner : MonoBehaviour
 {
     public GameObject enemy;
-    public Team[] teamMembers;
+    public List<Team> teamMembers;
     public int enemyTeamID = 1;
 
     void Start()
@@ -29,13 +29,23 @@ public class AimAssistSpawner : MonoBehaviour
 
     public GameObject FindClosestEnemy()
     {
-        teamMembers = FindObjectsOfType<Team>();
+        //Replace team.getRoster with findobjectsoftype when the level has lots of enemys to learn about big o
+        teamMembers = Team.GetRoster(enemyTeamID);//FindObjectsOfType<Team>();
+        //Debug.Log(enemyTeamID + " " + teamMembers.Count);
         float closestPos = float.PositiveInfinity;
         int closestEnemyID = 0;
 
-        for (int i = 0; i < teamMembers.Length; i++)
+        for (int i = 0; i < teamMembers.Count; i++)
         {
-            if (teamMembers[i].teamID == enemyTeamID && teamMembers[i].GetComponent<Hitpoints>().enabled)
+            if(teamMembers[i] == null)
+            {
+                teamMembers.RemoveAt(i);
+                i--;
+                continue;
+            }
+            bool hasHitpoints = teamMembers[i].GetComponent<Hitpoints>().enabled;
+            bool isNotBullet = teamMembers[i].GetComponent<BulletBreakable>() == null;
+            if (teamMembers[i].teamID == enemyTeamID && hasHitpoints && isNotBullet)
             {
                 if(Vector3.Distance(this.transform.position, teamMembers[i].transform.position) < closestPos)
                 {

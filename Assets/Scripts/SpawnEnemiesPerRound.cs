@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpawnEnemiesPerRound : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class SpawnEnemiesPerRound : MonoBehaviour
     public int count = 5;
     public int distancespawn = 25;
     public Vector3 delta = new Vector3(1.5f, 0, 0);
-    public GameObject thing;
+    public GameObject[] enemyPrefabs;
     public EnemyController hivemind;
     public bool waveover = false;
     public GameObject prefabhm;
@@ -22,6 +23,8 @@ public class SpawnEnemiesPerRound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
 
         // Separate the normal enemy counter from boss counter because bosses dont spawn every round and are stronger
         
@@ -44,12 +47,14 @@ public class SpawnEnemiesPerRound : MonoBehaviour
         {
             hivemind = GetComponent<EnemyController>();
         }
-        hivemind.listOfEnemies = new GameObject[count];
+        hivemind.listOfEnemies = new List<GameObject>(count);
         for (int i = 0; i < count; i++)
         {
-            GameObject obj = Instantiate(thing, delta * i + transform.position, transform.rotation);
+            int num = Random.Range(0, enemyPrefabs.Length);
+            GameObject obj = Instantiate(enemyPrefabs[num], delta * i + transform.position, transform.rotation);
             obj.transform.SetParent(this.transform);
-            hivemind.listOfEnemies[i] = obj;
+            //hivemind.listOfEnemies[i] = obj;
+            hivemind.listOfEnemies.Add(obj);
         }
     }
 

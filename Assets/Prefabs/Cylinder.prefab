@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2834332518825956163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.707, z: 0.464}
+  m_LocalPosition: {x: 0, y: 0.707, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,8 +48,10 @@ MonoBehaviour:
   ally: {fileID: 3985186476566347110}
   athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
+  maxammo: 6
   spawnbutton: 98
   timer: 1.5
+  radius: 0.125
   cd: 0
   rlttime: 3
   aim: {fileID: 0}
@@ -5029,6 +5031,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitpoints: 3
+  renderer: {fileID: 0}
+  colorCycle: 1
   hitcolor:
     serializedVersion: 2
     key0: {r: 0.3254902, g: 0.32156864, b: 0.3372549, a: 1}

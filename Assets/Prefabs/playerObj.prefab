@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitpoints: 3
   renderer: {fileID: 0}
+  colorCycle: 1
   hitcolor:
     serializedVersion: 2
     key0: {r: 0.3254902, g: 0.32156864, b: 0.3372549, a: 1}
@@ -255,7 +256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4964152919069627100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.208, y: 0.025, z: -0.332}
+  m_LocalPosition: {x: 1.438, y: 0.025, z: -0.454}
   m_LocalScale: {x: 0.22, y: 0.12, z: 0.52}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,6 +331,7 @@ MonoBehaviour:
   maxammo: 6
   spawnbutton: 324
   timer: 0
+  radius: 0.125
   cd: 0.7
   rlttime: 3
   aim: {fileID: 4964152919030551045}
@@ -472,7 +474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4964152919240886748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.208, y: 0.025, z: -0.332}
+  m_LocalPosition: {x: -1.438, y: 0.025, z: -0.454}
   m_LocalScale: {x: 0.22, y: 0.12, z: 0.52}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -547,6 +549,7 @@ MonoBehaviour:
   maxammo: 6
   spawnbutton: 323
   timer: 0
+  radius: 0.125
   cd: 0.7
   rlttime: 3
   aim: {fileID: 4964152919118285579}

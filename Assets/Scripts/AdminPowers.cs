@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdminPowers : MonoBehaviour
 {
+    public TMPro.TMP_InputField inputField;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +28,15 @@ public class AdminPowers : MonoBehaviour
         {
             hps[i].hitpoints = 0;
         }
+    }
+
+    public void WaveSelect()
+    {
+        KillAll();
+        LevelManager lm = FindObjectOfType<LevelManager>();
+        ImportantVars.Instance.wave = int.Parse(inputField.text);
+        lm.SpawnCurrentLevel();
+
+
     }
 }

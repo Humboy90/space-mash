@@ -5,10 +5,12 @@ using UnityEngine.Events;
 
 public class Hitpoints : MonoBehaviour
 {
-    [SerializeField] private int _hitpoints = 3;
+    [SerializeField] private float _hitpoints = 3;
     private float _hittimer;
     private float _scalar;
     public Renderer renderer;
+    public bool colorCycle = true;
+    public bool triggeredDeath;
     private Color ogcolor;
     public Gradient hitcolor;
     public UnityEvent onDeath;
@@ -19,7 +21,7 @@ public class Hitpoints : MonoBehaviour
         public int hp;
         public bool invoked;
         public UnityEvent startfunction;
-        public void TriggerPhases(int _hitpoints)
+        public void TriggerPhases(float _hitpoints)
         {
             if (invoked || _hitpoints > hp)
             {
@@ -43,7 +45,7 @@ public class Hitpoints : MonoBehaviour
             _scalar = 1 / value;
         }
     }
-    public int hitpoints
+    public float hitpoints
     {
         get => _hitpoints;
         set
@@ -58,8 +60,18 @@ public class Hitpoints : MonoBehaviour
             
             if (_hitpoints <= 0)
             {
-                onDeath.Invoke();
-                ImportantVars.Instance.score += score;
+                if(!triggeredDeath)
+                {
+                    onDeath.Invoke();
+                    Debug.Log("trigger score" + name);
+                    ImportantVars.Instance.score += score;
+                    triggeredDeath = true;
+                }
+                else
+                {
+                    // weird thing about the engine allows hitpoints to trigger twice
+                    Debug.Log("not again >:(");
+                }
             }
         }
         
@@ -77,7 +89,10 @@ public class Hitpoints : MonoBehaviour
         else
         {
             _hittimer -= Time.deltaTime;
-
+            if(renderer == null)
+            {
+                return;
+            }
 
             renderer.material.color = hitcolor.Evaluate(_hittimer * _scalar);
             if(_hittimer <= 0)
@@ -94,8 +109,24 @@ public class Hitpoints : MonoBehaviour
     
     public void RecalculateRender()
     {
+        if (!colorCycle)
+        {
+            return;
+        }
         renderer = GetComponentInChildren<Renderer>();
-        ogcolor = renderer.material.color;
+        if(renderer is LineRenderer)
+        {
+            renderer = null;
+        }
+        if(renderer == null)
+        {
+            return;
+        }
+        else
+        {
+            ogcolor = renderer.material.color;
+        }
+        
     }
 
 }

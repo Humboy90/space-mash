@@ -33,7 +33,7 @@ public class SpawnClusters : MonoBehaviour
         }
 
         int counter = 0;
-        for (int i = 0; i < hivemind.listOfEnemies.Length; i++)
+        for (int i = 0; i < hivemind.listOfEnemies.Count; i++)
         {
             GameObject obj = hivemind.listOfEnemies[i];
             if (obj.GetComponent<Hitpoints>().enabled == false)
@@ -42,7 +42,7 @@ public class SpawnClusters : MonoBehaviour
             }
 
         }
-        if (counter == hivemind.listOfEnemies.Length && hivemind.listOfEnemies.Length != 0)
+        if (counter == hivemind.listOfEnemies.Count && hivemind.listOfEnemies.Count != 0)
         {
             waveover = true;
         }
@@ -83,7 +83,7 @@ public class SpawnClusters : MonoBehaviour
         enemytypes t = round[roundindex];
         int enemyindex = (int)t;
         prefabhm = enemys[enemyindex];
-        GameObject thing = Instantiate(prefabhm, player.transform.position + player.transform.forward * distancespawn, player.transform.rotation);
+        GameObject thing = Instantiate(prefabhm, player.transform.position + player.transform.forward * distancespawn, player.transform.rotation * Quaternion.AngleAxis(180, Vector3.up));
         hivemind = thing.GetComponent<EnemyController>();
     }
 

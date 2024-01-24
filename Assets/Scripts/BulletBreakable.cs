@@ -34,8 +34,15 @@ public class BulletBreakable : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Destroy(gameObject);
-        DestroySequence();
+        if(collision.gameObject.GetComponent<Team>() == null)
+        {
+            return;
+        }
+        if(collision.gameObject.GetComponent<Team>().teamID != this.GetComponent<Team>().teamID)
+        {
+            DestroySequence();
+        }
+        
     }
 
     public void DestroySequence()

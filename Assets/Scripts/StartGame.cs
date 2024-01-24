@@ -100,9 +100,9 @@ public class StartGame : MonoBehaviour
 
     public void RestartSpeedrun()
     {
-        Debug.Log("about to reload scene");
+        //Debug.Log("about to reload scene");
         SceneManager.LoadScene("GameScene");
-        Debug.Log("scene loaded");
+        //Debug.Log("scene loaded");
         TimeSpeedrun();
 
     }
