@@ -22,8 +22,12 @@ public class EnemyFireingLogic : MonoBehaviour
 
     private void Start()
     {
-        //Environment.TickCount TODO : Count in milliseconds
-        reloadingimg.enabled = false;
+        
+        if(reloadingimg != null)
+        {
+            reloadingimg.enabled = false;
+        }
+        
     }
 
     // Update is called once per frame

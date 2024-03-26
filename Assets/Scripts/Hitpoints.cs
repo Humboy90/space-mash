@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Hitpoints : MonoBehaviour
 {
     [SerializeField] private float _hitpoints = 3;
+    [SerializeField] private float _maxhitpoints = -1;
     private float _hittimer;
     private float _scalar;
     public Renderer renderer;
@@ -45,6 +46,12 @@ public class Hitpoints : MonoBehaviour
             _scalar = 1 / value;
         }
     }
+    public float maxhitpoints
+    {
+        get => _maxhitpoints;
+        set => maxhitpoints = value;
+    }
+
     public float hitpoints
     {
         get => _hitpoints;
@@ -63,22 +70,29 @@ public class Hitpoints : MonoBehaviour
                 if(!triggeredDeath)
                 {
                     onDeath.Invoke();
-                    Debug.Log("trigger score" + name);
+                    //Debug.Log("trigger score" + name);
                     ImportantVars.Instance.score += score;
                     triggeredDeath = true;
                 }
-                else
+                else if (!haveComplainedDoubleDeath)
                 {
                     // weird thing about the engine allows hitpoints to trigger twice
                     Debug.Log("not again >:(");
+                    haveComplainedDoubleDeath = true;
                 }
             }
         }
         
     }
+    private static bool haveComplainedDoubleDeath;
     public void Start()
     {
+        if(_maxhitpoints == -1)
+        {
+            _maxhitpoints = _hitpoints;
+        }
         RecalculateRender();
+
     }
     public void Update()
     {

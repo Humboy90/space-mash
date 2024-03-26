@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Spawner : MonoBehaviour
 {
     public GameObject ally;
-    public GameObject athing;
+    public GameObject bullet;
     public int ammoCount;
     public int maxammo = 6;
     public KeyCode spawnbutton = KeyCode.Mouse0;
@@ -85,7 +85,8 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                Debug.Log("You need ammo!");
+                //Debug.Log("You need ammo!");
+                //TODO :  Add noise when reloading
             }
             
         }
@@ -96,10 +97,11 @@ public class Spawner : MonoBehaviour
         }
 
     }
-
+    
     public GameObject Spawn()
     {
-        GameObject thing = Instantiate(athing, transform.position, transform.rotation);
+        //Debug.Log(gameObject);
+        GameObject thing = Instantiate(bullet, transform.position, transform.rotation);
         Damage dmg = thing.GetComponentInChildren<Damage>();
         if(dmg != null)
         {

@@ -10,6 +10,15 @@ public class LevelProgression
     {
         this.rosters = rosters;
     }
+    public LevelProgression(LevelProgression toCopy)
+    {
+        this.name = toCopy.name;
+        this.rosters = new Roster[toCopy.rosters.Length];
+        for(int i = 0; i < rosters.Length; i++)
+        {
+            rosters[i] = new Roster(toCopy.rosters[i]);
+        }
+    }
     [System.Serializable]
     public class Roster
     {
@@ -18,6 +27,13 @@ public class LevelProgression
         public GameObject subject;
         public int minCount;
         public int maxCount;
+        public Roster(Roster toCopy)
+        {
+            this.name = toCopy.name;
+            this.subject = toCopy.subject;
+            this.minCount = toCopy.minCount;
+            this.maxCount = toCopy.maxCount;
+        }
         public Roster(int min, int max, GameObject subject)
         {
             minCount = min;

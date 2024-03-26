@@ -35,7 +35,7 @@ public class ChangeBullets : MonoBehaviour
     {
         for(int i =0; i<spawners.Length; i++)
         {
-            spawners[i].athing = bullets[bulletIndex];
+            spawners[i].bullet = bullets[bulletIndex];
         }
     }
 }

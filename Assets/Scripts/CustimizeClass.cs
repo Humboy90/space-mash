@@ -93,6 +93,9 @@ public class CustimizeClass : MonoBehaviour
 
         GameObject modelToSpawn = shipArray[choiceIndex].modelType;
         currentModel = Instantiate(modelToSpawn);
+        //currentModel.gameObject.layer = 6;
+        //currentModel.transform.GetChild(0).gameObject.layer = 6;
+        SetObjectToLayer(currentModel, 6);
         currentModel.transform.SetParent(spinningThing);
         currentModel.transform.localPosition = Vector3.zero;
         //copy.transform.localRotation = Quaternion.identity;
@@ -126,8 +129,11 @@ public class CustimizeClass : MonoBehaviour
         currentColor = shipColor;
         RefreshShipModel();
         player.GetComponent<ChangeBullets>().BulletIndex = shipArray[choiceIndex].bulletIndex;
-
+        
         sc.shipGraphic = Instantiate(currentModel);
+        //sc.shipGraphic.layer = 0;
+        //sc.shipGraphic.transform.GetChild(0).gameObject.layer = 0;
+        SetObjectToLayer(sc.shipGraphic, 0);
         sc.shipGraphic.transform.SetParent(player.transform);
         sc.shipGraphic.transform.SetSiblingIndex(0);
         sc.shipGraphic.transform.localPosition = Vector3.zero;
@@ -138,7 +144,16 @@ public class CustimizeClass : MonoBehaviour
 
     }
 
-    // TODO : Make function that loads the saved ship & color from player prefs
+    public void SetObjectToLayer(GameObject go, int layer)
+    {
+        go.layer = layer;
+        for (int i = 0; i< go.transform.childCount; i++)
+        {
+            SetObjectToLayer(go.transform.GetChild(i).gameObject, layer);
+        }
+
+
+    }
 
     int CompressNumbers(byte a, byte b, byte c, byte d)
     {

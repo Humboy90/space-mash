@@ -18,9 +18,12 @@ public class Damage : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         doCollision(other.gameObject);
+        HealthBar.Instance.transform.position = other.transform.position;
+        HealthBar.Instance.transform.rotation = Camera.main.transform.rotation;
+        HealthBar.Instance.hp = other.GetComponent<Hitpoints>();
     }
 
-    public void doCollision(GameObject go)
+    public virtual void doCollision(GameObject go)
     {
         
         Team team = go.GetComponent<Team>();
@@ -49,15 +52,19 @@ public class Damage : MonoBehaviour
                 hp.hittimer = 1f / 4;
                 if (collisions >= maxCollisons && GetComponent<Astroid>() == null)
                 {
-                    rb.velocity = Vector3.zero;
-                    GetComponent<BulletBreakable>().DestroySequence();
+                    if(rb != null)
+                    {
+                        rb.velocity = Vector3.zero;
+                    }
+                    if (GetComponent<BulletBreakable>() != null)
+                    {
+                        GetComponent<BulletBreakable>().DestroySequence();
+                    }
+                   
                 }
             }
         }
-        else
-        {
-            return;
-        }
+        
         
     }
 }

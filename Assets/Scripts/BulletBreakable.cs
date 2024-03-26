@@ -40,7 +40,7 @@ public class BulletBreakable : MonoBehaviour
         }
         if(collision.gameObject.GetComponent<Team>().teamID != this.GetComponent<Team>().teamID)
         {
-            DestroySequence();
+            //DestroySequence();
         }
         
     }

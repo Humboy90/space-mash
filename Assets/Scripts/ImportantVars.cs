@@ -14,6 +14,7 @@ public class ImportantVars : MonoBehaviour
     public static ImportantVars Instance;
     public HudUI hud;
     public TimeSpeedrun tsscript;
+    public static ShipController thePlayer => GameObject.FindObjectOfType<ShipController>(true);
 
     public int EnemyCount
     {

@@ -47,6 +47,7 @@ MonoBehaviour:
   distanceBetweenEnemies: {x: 1.5, y: 0, z: 0}
   waveover: 0
   aboutToSpawn: 0
+  sizeOfGame: 75
   spawnDelay: 0.25
   EnemyWatcher: []
   levelProgressions:

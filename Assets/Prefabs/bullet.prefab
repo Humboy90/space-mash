@@ -137,6 +137,7 @@ MonoBehaviour:
   _hitpoints: 0.01
   renderer: {fileID: 0}
   colorCycle: 0
+  triggeredDeath: 0
   hitcolor:
     serializedVersion: 2
     key0: {r: 1, g: 1, b: 1, a: 1}
@@ -403,7 +404,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.827
       inSlope: 0
       outSlope: 0
       tangentMode: 0

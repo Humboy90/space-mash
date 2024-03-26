@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 3985186476566347110}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 98
@@ -4977,8 +4977,12 @@ GameObject:
   - component: {fileID: 1482629281}
   - component: {fileID: 1685081003220502806}
   - component: {fileID: 8491904731182651827}
+  - component: {fileID: 8241516499028821857}
+  - component: {fileID: 3912790815101749777}
+  - component: {fileID: 5076448188964653067}
+  - component: {fileID: 6145046735803938666}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: trashbin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5033,6 +5037,7 @@ MonoBehaviour:
   _hitpoints: 3
   renderer: {fileID: 0}
   colorCycle: 1
+  triggeredDeath: 0
   hitcolor:
     serializedVersion: 2
     key0: {r: 0.3254902, g: 0.32156864, b: 0.3372549, a: 1}
@@ -5127,7 +5132,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &1482629281
 MonoBehaviour:
@@ -5172,7 +5177,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92dda16f5f1e2340b818d84c7027457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamID: 1
+  _teamID: 1
+--- !u!114 &8241516499028821857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985186476566347110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccc4299090a0c74d9a93080b37d3836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decelerationPower: 3
+  rb: {fileID: 1482629282}
+  velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &3912790815101749777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985186476566347110}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c4d4918a7c7254c89cc1514754b89b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rb: {fileID: 1482629282}
+  accelerationForce: 10
+  maxspeed: 10
+--- !u!114 &5076448188964653067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985186476566347110}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6290887fbb127a2418208074f7537694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rb: {fileID: 1482629282}
+  accelerationForce: 3
+  maxspeed: 10
+--- !u!114 &6145046735803938666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985186476566347110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949ef7040e644dd4ab1df5b745d6d96a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flee: {fileID: 5076448188964653067}
+  seek: {fileID: 3912790815101749777}
+  stop: {fileID: 8241516499028821857}
+  hp: {fileID: 3985186476566347105}
+  target: {fileID: 0}
+  rundistance: 12.5
 --- !u!1 &4866240748940647344
 GameObject:
   m_ObjectHideFlags: 0
