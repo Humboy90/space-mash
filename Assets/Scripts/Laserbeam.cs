@@ -47,7 +47,7 @@ public class Laserbeam : MonoBehaviour
 
     public void doLaserLength(Collider other)
     {
-        Debug.Log(other.gameObject);
+        //Debug.Log(other.gameObject);
         Vector3 endpoint = other.transform.position;
         Vector3 startpoint = lineRend.transform.position;
         Vector3 delta = endpoint - startpoint;
