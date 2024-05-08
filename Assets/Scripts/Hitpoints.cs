@@ -15,6 +15,7 @@ public class Hitpoints : MonoBehaviour
     private Color ogcolor;
     public Gradient hitcolor;
     public UnityEvent onDeath;
+    public UnityEvent onHPchange;
     public Phase[] phases = new Phase[0];
     [System.Serializable] public class Phase
     {
@@ -49,7 +50,7 @@ public class Hitpoints : MonoBehaviour
     public float maxhitpoints
     {
         get => _maxhitpoints;
-        set => maxhitpoints = value;
+        set => _maxhitpoints = value;
     }
 
     public float hitpoints
@@ -58,6 +59,7 @@ public class Hitpoints : MonoBehaviour
         set
         {
             _hitpoints = value;
+            onHPchange.Invoke();
             for (int i = 0; i < phases.Length; i++)
             {
                 Phase p = phases[i];
@@ -142,5 +144,7 @@ public class Hitpoints : MonoBehaviour
         }
         
     }
+
+    
 
 }

@@ -4981,6 +4981,7 @@ GameObject:
   - component: {fileID: 3912790815101749777}
   - component: {fileID: 5076448188964653067}
   - component: {fileID: 6145046735803938666}
+  - component: {fileID: 62734502857947829}
   m_Layer: 0
   m_Name: trashbin
   m_TagString: Untagged
@@ -5035,6 +5036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitpoints: 3
+  _maxhitpoints: -1
   renderer: {fileID: 0}
   colorCycle: 1
   triggeredDeath: 0
@@ -5082,6 +5084,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 62734502857947829}
+        m_TargetAssemblyTypeName: RandomPowerUpDrop, Assembly-CSharp
+        m_MethodName: DropLoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHPchange:
+    m_PersistentCalls:
+      m_Calls: []
   phases:
   - name: 
     hp: 0
@@ -5243,6 +5260,23 @@ MonoBehaviour:
   hp: {fileID: 3985186476566347105}
   target: {fileID: 0}
   rundistance: 12.5
+--- !u!114 &62734502857947829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985186476566347110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e653b37a42d7940aede8365bf48026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LootTable:
+  - {fileID: 8395890471019100501, guid: 68f88e6c82a129547879c40cc14b272d, type: 3}
+  - {fileID: 4128261436440490212, guid: 4092f40008f76f64c8f459881f1ed2d6, type: 3}
+  - {fileID: 4128261436440490212, guid: bd5ff17c71c139a468e1510e9d67c3bd, type: 3}
+  dropChance: 0.25
 --- !u!1 &4866240748940647344
 GameObject:
   m_ObjectHideFlags: 0

@@ -114,6 +114,14 @@ public class Spawner : MonoBehaviour
             //Debug.Log("my team assign : " + dmg.owner.GetComponent<Team>().teamID);
             team.teamID = dmg.owner.GetComponent<Team>().teamID;
         }
+        ShipImportantVars shipIV = dmg.owner.GetComponent<ShipImportantVars>();
+        DamageUpgrade dU = thing.GetComponent<DamageUpgrade>();
+        if (shipIV != null)
+        {
+            dmg.damage = dU.damageTier[(int)shipIV.damageTier];
+        }
+        
+        
         return thing;
     }
 }

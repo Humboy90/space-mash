@@ -7,6 +7,13 @@ public class BulletBreakable : MonoBehaviour
     public float lifetime = 3;
     void Start()
     {
+        Damage dmg = GetComponent<Damage>();
+        ShipImportantVars shipIV = dmg.owner.GetComponent<ShipImportantVars>();
+        if(shipIV != null)
+        {
+            lifetime = GetComponent<DamageUpgrade>().rangeTier[(int)shipIV.rangeTier];
+        }
+
         //Destroy(gameObject, 3);
         StartCoroutine(destroyMeIfImStillAlive());
     }

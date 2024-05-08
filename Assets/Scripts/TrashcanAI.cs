@@ -30,7 +30,7 @@ public class TrashcanAI : MonoBehaviour
         //when this distance is 20 greater than the target position stop moving
         // when less than 20 flee 
         // if more than 20 seek.
-        if(hp.hitpoints == 1)
+        if(hp.hitpoints <= 1)
         {
             flee.enabled = false;
             stop.enabled = false;

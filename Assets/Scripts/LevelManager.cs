@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         AutoExpandLevelProgression(sizeOfGame);
-        Debug.Log("spawning level :" + wavelevel);
+        //Debug.Log("spawning level :" + wavelevel);
         SpawnCurrentLevel();
     }
 
@@ -118,7 +118,7 @@ public class LevelManager : MonoBehaviour
         {
             r = levelProgression.rosters[i];
             int count = Random.Range(r.minCount, r.maxCount + 1);
-            Debug.Log("spawning" + r.subject.name + " " + r.minCount + " " + r.maxCount);
+            //Debug.Log("spawning" + r.subject.name + " " + r.minCount + " " + r.maxCount);
             for(int j =0; j<count; j++)
             {
                 GameObject spawnedEnemy = Instantiate(r.subject, distanceBetweenEnemies * j + transform.position, transform.rotation);

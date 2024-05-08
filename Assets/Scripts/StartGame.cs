@@ -13,6 +13,8 @@ public class StartGame : MonoBehaviour
     public TMPro.TMP_Text text;
     public GameObject hud;
     public GameObject mainmenu;
+    public GameObject defaultBullet;
+    public MultiStats multiStat;
 
     public TMPro.TMP_InputField waveEndInputField;
     public GameObject winScreen;
@@ -20,11 +22,18 @@ public class StartGame : MonoBehaviour
     public TMPro.TMP_Text score;
     public TimeSpeedrun TSScript;
     public bool timespeedruntoggle;
+    public bool spawnManagerSpawned;
 
     public GameObject startbutton;
     public GameObject resumebutton;
     public GameObject playerobj;
     public ImportantOBJManager importantobjm;
+    public HudUI hudUI;
+
+    public void Start()
+    {
+        hudUI = GetComponent<HudUI>();
+    }
 
     private void Update()
     {
@@ -85,7 +94,12 @@ public class StartGame : MonoBehaviour
         startbutton.SetActive(false);
         resumebutton.SetActive(true);
         ImportantVars.Instance.EnemyCount = 0;
-        importantobjm.Instantiate();
+        if (!spawnManagerSpawned)
+        {
+            importantobjm.Instantiate();
+            spawnManagerSpawned = true;
+        }
+        
 
     }
 
@@ -104,6 +118,38 @@ public class StartGame : MonoBehaviour
         SceneManager.LoadScene("GameScene");
         //Debug.Log("scene loaded");
         TimeSpeedrun();
+
+    }
+
+    public void NewGameNow()
+    {
+        StatChangeButton[] statChangeB = multiStat.GetComponentsInChildren<StatChangeButton>();
+        for (int i = 0; i < statChangeB.Length; i++)
+        {
+            statChangeB[i].currentClicks = 0;
+            statChangeB[i].Refresh();
+        }
+        ImageModifier[] imgMod = multiStat.GetComponentsInChildren<ImageModifier>();
+        for (int j = 0; j < imgMod.Length; j++)
+        {
+            imgMod[j].image.fillAmount = 0;
+        }
+
+
+        playerobj.GetComponentInChildren<Hitpoints>().hitpoints = playerobj.GetComponentInChildren<Hitpoints>().maxhitpoints;
+        Spawner spawner1 = hudUI.ammo1;
+        Spawner spawner2 = hudUI.ammo2;
+        playerobj.transform.position = Vector3.zero;
+        playerobj.transform.rotation = Quaternion.identity;
+        playerobj.GetComponentInChildren<Hitpoints>().triggeredDeath = false;
+        spawner1.bullet = defaultBullet;
+        spawner2.bullet = defaultBullet;
+        spawner1.ReloadNow();
+        spawner2.ReloadNow();
+        AdminPowers.Instance.KillAll();
+        StartGameNow();
+
+
 
     }
 

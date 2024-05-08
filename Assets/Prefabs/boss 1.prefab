@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 4482214624920380072}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 4482214624920380072}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 0
@@ -729,7 +729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 4482214624920380072}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 0
@@ -777,6 +777,10 @@ GameObject:
   - component: {fileID: 4482214624920380081}
   - component: {fileID: 4482214624920380078}
   - component: {fileID: 3807517892485801918}
+  - component: {fileID: 24658874419173220}
+  - component: {fileID: 900881204679964071}
+  - component: {fileID: 1963337787833722977}
+  - component: {fileID: 4298702081107418514}
   m_Layer: 0
   m_Name: boss 1
   m_TagString: Untagged
@@ -831,6 +835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitpoints: 9
+  _maxhitpoints: -1
   renderer: {fileID: 0}
   colorCycle: 1
   triggeredDeath: 0
@@ -984,6 +989,71 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &24658874419173220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482214624920380072}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6290887fbb127a2418208074f7537694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rb: {fileID: 3807517892485801918}
+  accelerationForce: 3
+  maxspeed: 10
+--- !u!114 &900881204679964071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482214624920380072}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c4d4918a7c7254c89cc1514754b89b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  rb: {fileID: 3807517892485801918}
+  accelerationForce: 3
+  maxspeed: 10
+--- !u!114 &1963337787833722977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482214624920380072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccc4299090a0c74d9a93080b37d3836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decelerationPower: 1
+  rb: {fileID: 3807517892485801918}
+  velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &4298702081107418514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4482214624920380072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949ef7040e644dd4ab1df5b745d6d96a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flee: {fileID: 24658874419173220}
+  seek: {fileID: 900881204679964071}
+  stop: {fileID: 1963337787833722977}
+  hp: {fileID: 4482214624920380075}
+  target: {fileID: 0}
+  rundistance: 10
 --- !u!1 &4482214625546830750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 4482214624920380072}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 0
@@ -1610,7 +1680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 4482214624920380072}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 0
@@ -1824,7 +1894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ally: {fileID: 4482214624920380072}
-  athing: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
+  bullet: {fileID: 8395890471019100501, guid: d5c7eefa7f66adb4aa0d64c83f7c7283, type: 3}
   ammoCount: 6
   maxammo: 6
   spawnbutton: 0

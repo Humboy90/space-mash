@@ -136,7 +136,13 @@ namespace NonStandard
 		}
 		public void Unpause()
 		{
-			if (!_isPaused) return;
+			if (!_isPaused)
+			{
+				//Debug.Log("alr unpaused");
+				return;
+			}
+			
+			//Debug.Log("unpause");
 			_isPaused = false;
 			foreach (LifeCycle lc in lifeCycles)
 			{
