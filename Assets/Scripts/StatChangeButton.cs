@@ -9,8 +9,8 @@ public class StatChangeButton : MonoBehaviour
     public int maxClick => valuePerClick.Length;
     public int currentClicks;
     public float[] valuePerClick = { 1, 2, 3, 4 };
-    
 
+    public ImageModifier im;
 
     [System.Serializable] public class UnityEvent_Float : UnityEvent<float>
     {
@@ -32,11 +32,18 @@ public class StatChangeButton : MonoBehaviour
 
     public void OnButtonClick()
     {
-        if(currentClicks < maxClick - 1)
+        if (ExpBar.Instance.pointsToUse >= 1)
         {
-            currentClicks += 1;
-            Refresh();
+            if (currentClicks < maxClick - 1)
+            {
+                currentClicks += 1;
+                Refresh();
+            }
+            ExpBar.Instance.pointsToUse -= 1;
+            im.AddFillAmount(.2f);
         }
+        
+        
     }
 
 

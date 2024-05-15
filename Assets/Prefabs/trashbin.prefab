@@ -5037,6 +5037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitpoints: 3
   _maxhitpoints: -1
+  expYield: 1
   renderer: {fileID: 0}
   colorCycle: 1
   triggeredDeath: 0
@@ -5087,6 +5088,18 @@ MonoBehaviour:
       - m_Target: {fileID: 62734502857947829}
         m_TargetAssemblyTypeName: RandomPowerUpDrop, Assembly-CSharp
         m_MethodName: DropLoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3985186476566347105}
+        m_TargetAssemblyTypeName: Hitpoints, Assembly-CSharp
+        m_MethodName: AddExpPoints
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5276,6 +5289,7 @@ MonoBehaviour:
   - {fileID: 8395890471019100501, guid: 68f88e6c82a129547879c40cc14b272d, type: 3}
   - {fileID: 4128261436440490212, guid: 4092f40008f76f64c8f459881f1ed2d6, type: 3}
   - {fileID: 4128261436440490212, guid: bd5ff17c71c139a468e1510e9d67c3bd, type: 3}
+  - {fileID: 3166574522483300809, guid: fc592b055108a254eb7d9b41347acb51, type: 3}
   dropChance: 0.25
 --- !u!1 &4866240748940647344
 GameObject:

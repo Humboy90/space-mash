@@ -288,18 +288,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3700774471007641528}
-        m_TargetAssemblyTypeName: ImageModifier, Assembly-CSharp
-        m_MethodName: AddFillAmount
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3700774471287396661}
         m_TargetAssemblyTypeName: StatChangeButton, Assembly-CSharp
         m_MethodName: OnButtonClick
@@ -332,6 +320,7 @@ MonoBehaviour:
   - 14
   - 20
   - 30
+  im: {fileID: 3700774471007641528}
   varToChange:
     m_PersistentCalls:
       m_Calls:

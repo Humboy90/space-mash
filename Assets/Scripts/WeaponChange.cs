@@ -6,6 +6,8 @@ public class WeaponChange : MonoBehaviour
 {
     public Spawner gunLeft;
     public Spawner gunRight;
+    public GameObject laser1;
+    public GameObject laser2;
 
     public float timer;
     public float duration = 3;
@@ -41,7 +43,11 @@ public class WeaponChange : MonoBehaviour
 
     public void SetWeapon(int index)
     {
-        if(gunLeft.bullet == weapons[index])
+        laser1.SetActive(false);
+        laser2.SetActive(false);
+        gunLeft.enabled = true;
+        gunRight.enabled = true;
+        if (gunLeft.bullet == weapons[index])
         {
             return;
         }
@@ -52,6 +58,10 @@ public class WeaponChange : MonoBehaviour
 
     public void SetTempWeapon(int index)
     {
+        laser1.SetActive(false);
+        laser2.SetActive(false);
+        gunLeft.enabled = true;
+        gunRight.enabled = true;
         gunLeft.bullet = weapons[index];
         gunRight.bullet = weapons[index];
         timer = duration;
@@ -59,6 +69,10 @@ public class WeaponChange : MonoBehaviour
 
     public void SetTempAmmoWeapon(int index)
     {
+        laser1.SetActive(false);
+        laser2.SetActive(false);
+        gunLeft.enabled = true;
+        gunRight.enabled = true;
         gunLeft.bullet = weapons[index];
         Debug.Log("changed bullet to " + weapons[index]);
         gunRight.bullet = weapons[index];
@@ -67,8 +81,12 @@ public class WeaponChange : MonoBehaviour
         gunRight.ReloadNow();
 
     }
-    public void SetLaserBeam(int index)
+    public void SetLaserBeam()
     {
+        gunLeft.enabled = false;
+        gunRight.enabled = false;
+        laser1.SetActive(true);
+        laser2.SetActive(true);
 
     }
 }

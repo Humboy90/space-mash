@@ -43,6 +43,11 @@ public class PowerUp : MonoBehaviour
         ImportantVars.Instance.GetComponent<WeaponChange>().SetTempAmmoWeapon(index);
     }
 
+    public void SetLaserBeam()
+    {
+        ImportantVars.Instance.GetComponent<WeaponChange>().SetLaserBeam();
+    }
+
 
     public void EmitParticles()
     {

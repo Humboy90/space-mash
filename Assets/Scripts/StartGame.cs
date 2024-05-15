@@ -12,6 +12,7 @@ public class StartGame : MonoBehaviour
     public GameObject bg;
     public TMPro.TMP_Text text;
     public GameObject hud;
+    public GameObject statTree;
     public GameObject mainmenu;
     public GameObject defaultBullet;
     public MultiStats multiStat;
@@ -86,6 +87,7 @@ public class StartGame : MonoBehaviour
         playerobj.SetActive(true);
         Debug.Log("Start Game now");
         hud.SetActive(true);
+        statTree.SetActive(true);
         mainmenu.SetActive(false);
         panel.ReanchorToRight();
         bg.SetActive(false);

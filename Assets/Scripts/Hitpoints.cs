@@ -7,6 +7,7 @@ public class Hitpoints : MonoBehaviour
 {
     [SerializeField] private float _hitpoints = 3;
     [SerializeField] private float _maxhitpoints = -1;
+    public float expYield = 1;
     private float _hittimer;
     private float _scalar;
     public Renderer renderer;
@@ -145,6 +146,9 @@ public class Hitpoints : MonoBehaviour
         
     }
 
-    
+    public void AddExpPoints()
+    {
+        ExpBar.Instance.AddExpPoints(expYield);
+    }
 
 }
