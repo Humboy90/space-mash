@@ -31,6 +31,10 @@ namespace NonStandard
                 
             }
         }
+
+		public string webplayerQuitURL;
+        
+
 		//public static LifeCycle Instance => Global.GetComponent<LifeCycle>();
 #if UNITY_EDITOR
 		public LifeCycleEvents lifeCycleEditor = new LifeCycleEvents();

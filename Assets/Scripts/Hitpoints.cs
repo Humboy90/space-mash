@@ -72,10 +72,11 @@ public class Hitpoints : MonoBehaviour
             {
                 if(!triggeredDeath)
                 {
-                    onDeath.Invoke();
+                    
                     //Debug.Log("trigger score" + name);
                     ImportantVars.Instance.score += score;
                     triggeredDeath = true;
+                    onDeath.Invoke();
                 }
                 else if (!haveComplainedDoubleDeath)
                 {

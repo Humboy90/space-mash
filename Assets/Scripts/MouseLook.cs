@@ -10,7 +10,8 @@ public class MouseLook : MonoBehaviour
     public float mousesens = 5;
     public Transform target;
     public float cameradistance = 10;
-
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +21,18 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mousex = Input.GetAxis("Mouse X")*mousesens;
-        float mousey = Input.GetAxis("Mouse Y")*mousesens;
-        pitch += -mousey;
+        if (ImportantVars.Instance.cameraFreeze == false)
+        {
+            float mousey = Input.GetAxis("Mouse Y") * mousesens;
+            pitch += -mousey;
+        }
+
+        else
+        {
+            pitch = 30;
+        }
+
+        float mousex = Input.GetAxis("Mouse X") * mousesens;
         yaw += mousex;
         transform.rotation = Quaternion.Euler(pitch, yaw, roll);
         if (target != null)

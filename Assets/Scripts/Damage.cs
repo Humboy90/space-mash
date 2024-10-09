@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Damage : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class Damage : MonoBehaviour
     public int maxCollisons = 1;
     public Rigidbody rb;
     public GameObject owner;
+    public UnityEvent onHit;
+    public Velocity velocity;
+
+    public void Start()
+    {
+        velocity = GetComponent<Velocity>();
+    }
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -25,7 +33,6 @@ public class Damage : MonoBehaviour
 
     public virtual void doCollision(GameObject go)
     {
-        
         Team team = go.GetComponent<Team>();
         if(team != null)
         {
@@ -62,9 +69,28 @@ public class Damage : MonoBehaviour
                     }
                    
                 }
+                onHit.Invoke();
             }
         }
         
         
+    }
+
+    public void BouncyBullets()
+    {
+        ChangeDirection();
+        maxCollisons += 2;
+    }
+
+
+    public void ChangeDirection()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        Vector3 nextDir = Random.insideUnitCircle;
+        nextDir.z = nextDir.y;
+        nextDir.y = 0;
+        nextDir = nextDir.normalized;
+
+        rb.velocity = nextDir * velocity.speed;
     }
 }

@@ -31,6 +31,9 @@ public class StartGame : MonoBehaviour
     public ImportantOBJManager importantobjm;
     public HudUI hudUI;
 
+    public GameObject tutorialUI;
+
+
     public void Start()
     {
         hudUI = GetComponent<HudUI>();
@@ -84,6 +87,7 @@ public class StartGame : MonoBehaviour
     public void StartGameNow()
     {
         ImportantVars.Instance.NewGame();
+        ImportantVars.Instance.wave = 1;
         playerobj.SetActive(true);
         Debug.Log("Start Game now");
         hud.SetActive(true);
@@ -148,20 +152,84 @@ public class StartGame : MonoBehaviour
         spawner2.bullet = defaultBullet;
         spawner1.ReloadNow();
         spawner2.ReloadNow();
-        AdminPowers.Instance.KillAll();
-        StartGameNow();
+        StartCoroutine(KillItTwice());
+        
 
+        IEnumerator KillItTwice()
+        {
+            AdminPowers.Instance.KillAll();
+            yield return null;
+            Hitpoints[] hps = GameObject.FindObjectsOfType<Hitpoints>();
+            if (hps.Length > 1)
+            {
+                AdminPowers.Instance.KillAll();
+            }
+            yield return null;
+            StartGameNow();
+        }
+
+    }
+
+
+    public void TutorialScene()
+    {
+        ImportantVars.Instance.NewGame();
+        ImportantVars.Instance.wave = 1;
+        playerobj.SetActive(true);
+        Debug.Log("Start Game now");
+        Spawner spawner1 = hudUI.ammo1;
+        Spawner spawner2 = hudUI.ammo2;
+
+        spawner1.enabled = false;
+        spawner2.enabled = false;
+        mainmenu.SetActive(false);
+        panel.ReanchorToRight();
+        bg.SetActive(false);
+        LifeCycle.Instance.Unpause();
+        timespeedruntoggle = false;
+        startbutton.SetActive(false);
+        resumebutton.SetActive(true);
+        tutorialUI.SetActive(true);
+        //ImportantVars.Instance.EnemyCount = 0;
+        //if (!spawnManagerSpawned)
+        //{
+        //    importantobjm.Instantiate();
+        //    spawnManagerSpawned = true;
+        //}
+        //hud.SetActive(true);
+        //statTree.SetActive(true);
+    }
+
+    public void PresentationMode()
+    {
+        //ImportantVars.Instance.NewGame();
+        //ImportantVars.Instance.wave = 1;
+        playerobj.SetActive(true);
+        Debug.Log("Start Game now");
+        hud.SetActive(true);
+        statTree.SetActive(true);
+        mainmenu.SetActive(false);
+        panel.ReanchorToRight();
+        bg.SetActive(false);
+        LifeCycle.Instance.Unpause();
+        timespeedruntoggle = false;
+        startbutton.SetActive(false);
+        resumebutton.SetActive(true);
+        //ImportantVars.Instance.EnemyCount = 0;
+        //if (!spawnManagerSpawned)
+        //{
+        //    importantobjm.Instantiate();
+        //    spawnManagerSpawned = true;
+        //}
 
 
     }
 
-    
 
 
 
 
-    
 
 
-    
+
 }

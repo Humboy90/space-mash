@@ -148,9 +148,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1.5
   collisions: 0
-  maxCollisons: 1
+  maxCollisons: 3
   rb: {fileID: 0}
   owner: {fileID: 0}
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+  velocity: {fileID: 0}
   radius: 0.03125
   stuntimer: 2
   line: {fileID: 241271003053877803}
@@ -264,13 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1dac5ca4dc10ec44ac02e5d439ca7d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet:
-  - 1.5
-  - 2
-  - 2.3
-  - 2.7
-  - 3
-  - 4
   damageTier:
   - 1.5
   - 2

@@ -33,6 +33,10 @@ public class ImportantVars : MonoBehaviour
     public TimeSpeedrun tsscript;
     public static ShipController thePlayer => GameObject.FindObjectOfType<ShipController>(true);
 
+    public bool cameraFreeze = true;
+
+    
+
     public int EnemyCount
     {
         get
@@ -160,6 +164,18 @@ public class ImportantVars : MonoBehaviour
         }
     }
 
+    public void ToggleCameraFreeze()
+    {
+        if (cameraFreeze)
+        {
+            cameraFreeze = false;
+        }
+        else
+        {
+            cameraFreeze = true;
+        }
+    }
+
     public void WaveEndAsString(string str)
     {
         gameEndWave = int.Parse(str);
@@ -170,13 +186,15 @@ public class ImportantVars : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            
         }
         else
         {
             Destroy(this.gameObject);
         }
     }
+
+
 
     public void NewGame()
     {

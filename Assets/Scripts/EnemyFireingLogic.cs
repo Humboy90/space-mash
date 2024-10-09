@@ -58,7 +58,7 @@ public class EnemyFireingLogic : MonoBehaviour
             else
             {
                 reloadingimg.enabled = true;
-                spawn.ammoCount = 6;
+                spawn.ammoCount = spawn.maxammo;
                 timer = reloadtime;
             }
             

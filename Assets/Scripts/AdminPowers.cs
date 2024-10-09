@@ -37,15 +37,26 @@ public class AdminPowers : MonoBehaviour
     {
         //GameObject.FindObjectsOfTypeAll(typeof(Hitpoints));
         Hitpoints[] hps = GameObject.FindObjectsOfType<Hitpoints>();
-        //HiveMindSpawner hivespawner = GameObject.FindObjectOfType<HiveMindSpawner>();
-        for (int i =0; i < hps.Length; i++)
+
+        for (int i = 0; i < hps.Length; i++)
         {
-            if(hps[i].gameObject.GetComponent<ShipController>() == null)
-            {
-                hps[i].hitpoints = 0;
-            }
-            ;
+            Debug.Log(hps[i]);
+
         }
+
+        //HiveMindSpawner hivespawner = GameObject.FindObjectOfType<HiveMindSpawner>();
+        if (hps.Length > 1)
+        {
+            for (int i = 0; i < hps.Length; i++)
+            {
+                if (hps[i].gameObject.GetComponent<ShipController>() == null)
+                {
+                    hps[i].hitpoints = 0;
+                }
+            
+            }
+        }
+        
     }
 
     public void Die1HP()
@@ -62,4 +73,6 @@ public class AdminPowers : MonoBehaviour
 
 
     }
+
+    
 }

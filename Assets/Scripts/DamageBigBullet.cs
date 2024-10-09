@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DamageBigBullet : Damage
 {
-    
+
     public override void doCollision(GameObject go)
     {
         
@@ -40,6 +41,7 @@ public class DamageBigBullet : Damage
                     GetComponent<BulletBreakable>().DestroySequence();
                     Debug.Log(go);
                 }
+                onHit.Invoke();
             }
         }
         else
@@ -47,5 +49,10 @@ public class DamageBigBullet : Damage
             return;
         }
         
+
+       
     }
+
+
+
 }
