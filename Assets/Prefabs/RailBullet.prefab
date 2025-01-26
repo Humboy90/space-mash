@@ -156,7 +156,7 @@ MonoBehaviour:
       m_Calls: []
   velocity: {fileID: 0}
   radius: 0.03125
-  stuntimer: 2
+  stuntimer: 0
   line: {fileID: 241271003053877803}
   exitTime: 1
   player: {fileID: 0}

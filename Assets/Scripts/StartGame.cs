@@ -157,7 +157,11 @@ public class StartGame : MonoBehaviour
 
         IEnumerator KillItTwice()
         {
-            AdminPowers.Instance.KillAll();
+            if (AdminPowers.Instance != null)
+            {
+                AdminPowers.Instance.KillAll();
+            }
+            
             yield return null;
             Hitpoints[] hps = GameObject.FindObjectsOfType<Hitpoints>();
             if (hps.Length > 1)

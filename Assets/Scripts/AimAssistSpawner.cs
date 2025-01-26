@@ -18,7 +18,7 @@ public class AimAssistSpawner : MonoBehaviour
     void Update()
     {
         enemy = FindClosestEnemy();
-        Wires.Make("enemyTracker").Arrow(transform.position, enemy.transform.position, Color.blue);
+        //Wires.Make("enemyTracker").Arrow(transform.position, enemy.transform.position, Color.blue);
         //this.transform.LookAt(enemy.transform);
         Vector3 delta = enemy.transform.position - transform.position;
         Vector3 direction = delta.normalized;
