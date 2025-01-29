@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1646513531094359309
+--- !u!1 &7592954487667617414
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1646513531094359318}
-  - component: {fileID: 1646513531094359305}
-  - component: {fileID: 1646513531094359304}
-  - component: {fileID: 1646513531094359307}
-  - component: {fileID: 1646513531094359306}
-  - component: {fileID: 1646513531094359319}
+  - component: {fileID: 7592954487667617437}
+  - component: {fileID: 7592954487667617410}
+  - component: {fileID: 7592954487667617411}
+  - component: {fileID: 7592954487667617408}
+  - component: {fileID: 7592954487667617409}
+  - component: {fileID: 7592954487667617436}
+  - component: {fileID: 5770536123398717831}
   m_Layer: 0
-  m_Name: swarmPowerUp
+  m_Name: killallPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1646513531094359318
+--- !u!4 &7592954487667617437
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531094359309}
+  m_GameObject: {fileID: 7592954487667617414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5972247, y: 0, z: 0.46719837}
+  m_LocalPosition: {x: -16.18, y: 0, z: -0.9761238}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1646513531649498651}
+  - {fileID: 7592954489262681488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1646513531094359305
+--- !u!33 &7592954487667617410
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531094359309}
+  m_GameObject: {fileID: 7592954487667617414}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1646513531094359304
+--- !u!23 &7592954487667617411
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531094359309}
+  m_GameObject: {fileID: 7592954487667617414}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -87,39 +88,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1646513531094359307
+--- !u!135 &7592954487667617408
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531094359309}
+  m_GameObject: {fileID: 7592954487667617414}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1646513531094359306
+--- !u!114 &7592954487667617409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531094359309}
+  m_GameObject: {fileID: 7592954487667617414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02a34164598e32944a8370d3e3f74243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mycamera: {fileID: 0}
---- !u!114 &1646513531094359319
+--- !u!114 &7592954487667617436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531094359309}
+  m_GameObject: {fileID: 7592954487667617414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e7197e0e9ae634fb55768af972f820, type: 3}
@@ -128,19 +129,7 @@ MonoBehaviour:
   OnPlayerTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1646513531094359319}
-        m_TargetAssemblyTypeName: PowerUp, Assembly-CSharp
-        m_MethodName: SetWeapon
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1646513531094359319}
+      - m_Target: {fileID: 7592954487667617436}
         m_TargetAssemblyTypeName: PowerUp, Assembly-CSharp
         m_MethodName: EmitParticles
         m_Mode: 1
@@ -152,7 +141,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1646513531094359309}
+      - m_Target: {fileID: 5770536123398717831}
+        m_TargetAssemblyTypeName: GameModPowerUp, Assembly-CSharp
+        m_MethodName: setGMActive
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7592954487667617414}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -165,7 +166,21 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   lifetime: 20
---- !u!1 &1646513531649498650
+--- !u!114 &5770536123398717831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592954487667617414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d92e88483399248a7472d2257193fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adpowers: {fileID: 0}
+  text: {fileID: 0}
+--- !u!1 &7592954489262681489
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,8 +188,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1646513531649498651}
-  - component: {fileID: 1646513531649498648}
+  - component: {fileID: 7592954489262681488}
+  - component: {fileID: 7592954489262681491}
   m_Layer: 0
   m_Name: boomerang-2549302041
   m_TagString: Untagged
@@ -182,28 +197,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1646513531649498651
+--- !u!4 &7592954489262681488
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531649498650}
+  m_GameObject: {fileID: 7592954489262681489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
+  m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 1646513531094359318}
+  m_Father: {fileID: 7592954487667617437}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1646513531649498648
+--- !u!212 &7592954489262681491
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646513531649498650}
+  m_GameObject: {fileID: 7592954489262681489}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -238,12 +253,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9fcea27932f99a4429f17df522b5eb17, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca20bb6880cd942429f67f08567ca7c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

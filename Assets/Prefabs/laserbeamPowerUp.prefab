@@ -164,6 +164,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  lifetime: 20
 --- !u!1 &3166574523004492510
 GameObject:
   m_ObjectHideFlags: 0

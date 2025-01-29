@@ -13,6 +13,7 @@ public class ShipController : MonoBehaviour
     public GameObject shipGraphic;
     public CustimizeClass custimizer;
     public Rigidbody rb;
+    public KeyCode mouselockkey;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Insert))
+        if (Input.GetKeyDown(mouselockkey))
         {
             if(cursorLock == false)
             {

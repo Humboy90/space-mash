@@ -5273,6 +5273,7 @@ MonoBehaviour:
   hp: {fileID: 3985186476566347105}
   target: {fileID: 0}
   rundistance: 12.5
+  toofarradius: 30
 --- !u!114 &62734502857947829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5290,6 +5291,8 @@ MonoBehaviour:
   - {fileID: 4128261436440490212, guid: 4092f40008f76f64c8f459881f1ed2d6, type: 3}
   - {fileID: 4128261436440490212, guid: bd5ff17c71c139a468e1510e9d67c3bd, type: 3}
   - {fileID: 1646513531094359309, guid: 5a952199e3d778b408722aae3f43a788, type: 3}
+  - {fileID: 7592954487667617414, guid: 442c154354b46594cadc4cd5d8cc98d8, type: 3}
+  - {fileID: 1678854644849989011, guid: 0543bf024ac957242995a71dcd28124e, type: 3}
   dropChance: 0.25
 --- !u!1 &4866240748940647344
 GameObject:

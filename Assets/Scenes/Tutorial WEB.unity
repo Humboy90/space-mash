@@ -3183,7 +3183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38980c87c9e4c704f9a38d528f3b8e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 27
+  key: 9
   onKeyPress:
     m_PersistentCalls:
       m_Calls:
@@ -13517,7 +13517,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You can upgrade your ship by killing enemies
 
-    Click ESC and click
+    Click Tab and click
     the upgrade on the Stat Tree'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -28297,7 +28297,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: MainMenuV2
+          m_StringArgument: MainMenuV2 WEB
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1797095164

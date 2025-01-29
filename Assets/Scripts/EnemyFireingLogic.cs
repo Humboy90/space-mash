@@ -46,6 +46,7 @@ public class EnemyFireingLogic : MonoBehaviour
                 
                 if (fa.isFacingEnemy())
                 {
+                    Debug.Log("im shooting");
                     spawn.Spawn();
                 }
                 else

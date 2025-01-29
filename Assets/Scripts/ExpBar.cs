@@ -9,7 +9,7 @@ public class ExpBar : MonoBehaviour
     public TMPro.TMP_Text text;
 
     public int level;
-    public float[] maxExpNeedForLVLup = {1,2,3,4,5};
+    public float[] maxExpNeedForLVLup = {1,2,3,4,5,6,7,8,9,10};
     public float expSum;
     public float currentProgress = 0;
     public int pointsToUse;

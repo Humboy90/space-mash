@@ -13,22 +13,31 @@ public class Damage : MonoBehaviour
     public UnityEvent onHit;
     public Velocity velocity;
 
+    
     public void Start()
     {
         velocity = GetComponent<Velocity>();
+        if(owner == null)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
         doCollision(collision.gameObject);
     }
-
+    
     public void OnTriggerEnter(Collider other)
     {
         doCollision(other.gameObject);
-        HealthBar.Instance.transform.position = other.transform.position;
-        HealthBar.Instance.transform.rotation = Camera.main.transform.rotation;
-        HealthBar.Instance.hp = other.GetComponent<Hitpoints>();
+        if(HealthBar.Instance != null)
+        {
+            HealthBar.Instance.transform.position = other.transform.position;
+            HealthBar.Instance.transform.rotation = Camera.main.transform.rotation;
+            HealthBar.Instance.hp = other.GetComponent<Hitpoints>();
+        }
+        
     }
 
     public virtual void doCollision(GameObject go)
